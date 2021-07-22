@@ -1,0 +1,23 @@
+.navbar {
+    background: lightgray;
+}
+.navbar-brand {
+    display: inline-flex;
+    padding:.5rem .5rem .5rem .25rem;
+    background: white;
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+    border-bottom-left-radius: 1rem;
+}
+.navbar-brand h1 {
+    margin:1.25rem .5rem;
+    font-size: 2vw;
+    font-family: 'Comfortaa', cursive;
+    color: rgb(17, 144, 203);
+    text-decoration: underline;
+}
+.navbar-brand img{
+    align-self: center;
+    width: auto;
+    height: 4vw;
+}
