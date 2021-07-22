@@ -13,7 +13,7 @@ const hbs = exphbs.create({helpers});
 require('dotenv').config()
 app.set('trust proxy',1)
 const sess = {
-  secret: process.env.SERVER_SECRET,
+  secret: 'Pickachu I choose You',
   cookie: {secure: true},
   resave: false,
   saveUninitialized: true,
