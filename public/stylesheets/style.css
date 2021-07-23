@@ -1,3 +1,11 @@
+* {
+    font-family: 'Comfortaa', cursive;
+}
+/* Navbar */
+.container-fluid {
+    width:auto;
+    margin:0px;
+}
 .navbar {
     background: lightgray;
 }
@@ -8,11 +16,11 @@
     border-top-left-radius: 1rem;
     border-top-right-radius: 1rem;
     border-bottom-left-radius: 1rem;
+    box-shadow: 0 4px 8px 0 rgb(54, 148, 192), 0 6px 20px 0 rgb(126, 126, 250);
 }
 .navbar-brand h1 {
     margin:1.25rem .5rem;
     font-size: 2vw;
-    font-family: 'Comfortaa', cursive;
     color: rgb(17, 144, 203);
     text-decoration: underline;
 }
@@ -20,4 +28,29 @@
     align-self: center;
     width: auto;
     height: 4vw;
+}
+.navbar-right-item{
+    padding:0vw 1vw;
+    
+}
+/* index */
+.intro {
+    margin: 2vw 30%;
+    text-align: center;
+}
+/* signup */
+.signUp{
+    margin: 2vw 40%;
+}
+.signUp-Partial{
+    background: #e7ecf0;
+    border: 5px;
+    border-style: inset;
+    padding: 1vw;
+    box-shadow: 0 4px 8px 0 rgb(54, 148, 192), 0 6px 20px 0 rgb(126, 126, 250);
+    border-color: rgb(93, 194, 241);
+}
+.signUp-Partial h2,.btn{
+    text-decoration: underline;
+    color:rgb(17, 144, 203);
 }

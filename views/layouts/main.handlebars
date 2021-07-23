@@ -17,25 +17,35 @@
     <div class="wrapper">
         <header>
             <nav class="navbar">
-                <div class="container-fluid">
+                <div class="container-fluid navbar-left">
                     <a class="navbar-brand" href="/">
                         <img src="/images/ROTLogo.PNG" alt="" class="d-inline-block align-text-top"
                             style="font-size:4vw">
                         <h1>Repository of Thought</h1>
                     </a>
+                </div>
+                <div class="container-fluid navbar-right">
+                    <div class='dashboard navbar-right-item'>
+                        <h2 type='submit' id='dashboardBtn'>dashboard</h2>
+                    </div>
+                    <div class='userState navbar-right-item'>
+                        <h2 type="submit" id='loginBtn' href='/login'>login</h2>
+                        <h2 type="submit">logout</h2>
+                    </div>
+                </div>
+                    
             </nav>
         </header>
         <main>
             {{{ body }}}
         </main>
         <footer>
-            Thanks for visiting!
         </footer>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
-    <script src="/javascript/test.js"></script>
+    <script src="/javascript/index.js"></script>
 </body>
 
 </html>

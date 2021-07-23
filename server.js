@@ -10,7 +10,6 @@ const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const helpers = require('./utils/helpers');
 const hbs = exphbs.create({helpers});
 
-require('dotenv').config()
 app.set('trust proxy',1)
 const sess = {
   secret: 'Pickachu I choose You',
