@@ -5,10 +5,7 @@ const testResponse = {
 
 
 router.get('/index', (req, res) => {
-    console.log(testResponse)
-    res.render('testView', {
-        testView: "This is a testView.handlebars response from index-routes.js"
-    })
+
 });
 
 router.get('/',(req,res) => {

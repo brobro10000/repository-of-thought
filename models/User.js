@@ -11,9 +11,12 @@ User.init({
         autoIncrement: true
     },
     username: {
-        type: DataTypes.STRING,
+        type: DataTypes.TEXT,
         allowNull: false,
-        unique: true
+        unique: {
+            args: true,
+            msg: "Username already in use"
+        }
     },
     password: {
         type: DataTypes.STRING,
