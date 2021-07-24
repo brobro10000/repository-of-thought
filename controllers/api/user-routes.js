@@ -27,13 +27,12 @@ router.post('/create_user', async (req, res) => {
         if (data == null) {
             res.json(addUser(req.body))
         } else {
-            res.json(console.log('failed'))
+            res.status(418).json()
         }
     })
 
     return checkUser
 })
 router.post('/login', (req, res) => {
-    User.findOne
 })
 module.exports = router
