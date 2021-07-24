@@ -8,11 +8,13 @@ const exphbs = require('express-handlebars');
 const session = require('express-session');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const helpers = require('./utils/helpers');
+const { response } = require('express');
 const hbs = exphbs.create({helpers});
 
+require('dotenv').config()
 app.set('trust proxy',1)
 const sess = {
-  secret: 'Pickachu I choose You',
+  secret: process.env.SERVER_SECRET,
   cookie: {secure: true},
   resave: false,
   saveUninitialized: true,
