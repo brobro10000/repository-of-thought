@@ -16,7 +16,7 @@ User.init({
         autoIncrement: true
     },
     username: {
-        type: DataTypes.TEXT,
+        type: DataTypes.STRING,
         allowNull: false,
         unique: {
             args: true,

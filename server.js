@@ -14,7 +14,6 @@ require('dotenv').config()
 app.set('trust proxy',1)
 const sess = {
   secret: process.env.SERVER_SECRET,
-  cookie: {secure: true},
   resave: false,
   saveUninitialized: true,
   store: new SequelizeStore({

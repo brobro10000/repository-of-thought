@@ -1,15 +1,17 @@
 const router = require('express').Router();
-const testResponse = {
-    test: "this is a test response from test-routes.js"
-}
-
 
 router.get('/index', (req, res) => {
-    res.render('index')
+    console.log(req.session.user_id)
+    if(req.session.user_id == 1){
+        var loggedIn = false
+    }
+    else{
+        var loggedIn = true
+    }
+    res.render('index', {loggedIn: loggedIn, signUp:true})
 });
 
 router.get('/',(req,res) => {
     res.redirect('/index');
 })
-
 module.exports = router

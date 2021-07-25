@@ -1,6 +1,34 @@
 const router = require('express').Router();
-const { User } = require('../../models/')
+const { User } = require('../../models/');
+const withAuth = require('../../utils/auth');
 
+router.post('/login', (req, res) => {
+  User.findOne({
+    where: {
+      username: req.body.username
+    }
+  }).then(data => {
+    if (!data) {
+      res.status(400).json({ message: 'No user with that username!' });
+      return;
+    }
+    
+    const validPassword = data.checkPassword(req.body.password);
+    
+    if (!validPassword) {
+      res.status(400).json({ message: 'Incorrect password!' });
+      return;
+    }
+    
+    req.session.save(() => {
+      req.session.user_id = data.id;
+      req.session.username = data.username;
+      req.session.loggedIn = true;
+      
+      res.redirect('/dashboard')
+    });
+  });
+})
 router.post('/create_user', async (req, res) => {
   function addUser(data) {
     User.create({
@@ -29,46 +57,22 @@ router.post('/create_user', async (req, res) => {
   
   return checkUser
 })
-router.post('/login', (req, res) => {
-  User.findOne({
-    where: {
-      username: req.body.username
-    }
-  }).then(data => {
-    if (!data) {
-      res.status(400).json({ message: 'No user with that username!' });
-      return;
-    }
-    
-    const validPassword = data.checkPassword(req.body.password);
-    
-    if (!validPassword) {
-      res.status(400).json({ message: 'Incorrect password!' });
-      return;
-    }
-    
-    req.session.save(() => {
-      req.session.user_id = data.id;
-      req.session.username = data.username;
-      req.session.loggedIn = true;
-      
-      res.json({ user: data, message: 'You are now logged in!' });
-    });
-  });
-})
+router.get('/', async (req, res) => {
+  const allUsers = await User.findAll()
+  res.json(allUsers)
+});
 
-router.post('/pikachu', (req, res) => {
+router.post('/logout', withAuth, async (req, res) => {
+  console.log(req.session)
   if (req.session.loggedIn) {
-    req.session.destroy(() => {
-      res.status(204).end();
+    await req.session.destroy(() => {
+      res.status(204).json({message: "User Logged Out"});
     });
   }
   else {
-    res.status(404).end();
+    res.status(500).json(console.log({message:'Internal Server Error'}));
   }
 });
-router.get('/', async (req, res) => {
-    const allUsers = await User.findAll()
-    res.json(allUsers)
-});
+
+
 module.exports = router

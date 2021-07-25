@@ -1,16 +1,15 @@
 async function logOut(event) {
     event.preventDefault()
 
-    const response = await fetch('/api/user/pikachu', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' }
+    const response = await fetch('/api/user/logout', {
+      method: 'POST'
     });
   
     if (response.ok) {
-      document.location.replace('/index');
+      document.location.replace('/');
     } else {
-      alert(response.statusText);
+      alert(response.data.message);
     }
   }
-  
+  if(document.getElementById('logoutBtn'))
   document.getElementById('logoutBtn').addEventListener('click', logOut)

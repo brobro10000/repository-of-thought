@@ -51,6 +51,5 @@ async function logIn(event) {
 
 };
 
-
-document.getElementById('signup-btn').addEventListener('click', signUp);
 document.getElementById('submit-btn').addEventListener('click', logIn)
+document.getElementById('signup-btn').addEventListener('click', signUp);

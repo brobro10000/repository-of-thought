@@ -1,0 +1,9 @@
+
+{{#if loggedIn}}
+<h2 type="submit" id='loginBtn' href='/login'>login</h2>
+{{/if}}
+{{#unless loggedIn}}
+<h2 type="submit" id='logoutBtn'>logout</h2>
+<script src="/javascript/logout.js"></script>
+{{/unless}}
+
