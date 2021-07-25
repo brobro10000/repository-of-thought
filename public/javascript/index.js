@@ -35,13 +35,13 @@ async function renderLogin() {
             'Content-Type': 'application/json'
         }
     })
-    if(render.ok) {
+    if (render.ok) {
         return console.log("true");
     } else {
         alert(render.statusText)
     }
 }
-if(document.getElementById('loginBtn'))
-document.getElementById('loginBtn').addEventListener('click', loginPage)
+if (document.getElementById('loginBtn'))
+    document.getElementById('loginBtn').addEventListener('click', loginPage)
 document.getElementById('dashboardBtn').addEventListener('click', dashboardPage)
 renderLogin()
