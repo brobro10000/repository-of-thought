@@ -24,7 +24,7 @@ router.post('/login', (req, res) => {
       req.session.user_id = data.id;
       req.session.username = data.username;
       req.session.loggedIn = true;
-      
+      req.session.expiration = Date.now() + (1000*30)
       res.redirect('/dashboard')
     });
   });
@@ -37,6 +37,7 @@ router.post('/create_user', async (req, res) => {
     }).then(data => {
       req.session.user_id = data.id;
       req.session.username = data.username;
+      req.session.expiration = Date.now() + (1000*60)
       req.session.loggedIn = true;
     }).catch(err => {
       console.log(err);

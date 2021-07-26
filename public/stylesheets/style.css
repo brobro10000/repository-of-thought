@@ -1,3 +1,10 @@
+html {
+    position: relative;
+    min-height: 100%;
+}
+body {
+    margin: 0 0 100px;
+}
 * {
     font-family: 'Comfortaa', cursive;
 }
@@ -53,4 +60,35 @@
 .signUp-Partial h2,.btn{
     text-decoration: underline;
     color:rgb(17, 144, 203);
+}
+/*posts*/
+.post-container {
+    margin: 1vw 20%;
+    padding:.5rem .5rem .5rem .25rem;
+    background: white;
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+    border-bottom-left-radius: 1rem;
+    box-shadow: 0 4px 8px 0 rgb(54, 148, 192), 0 6px 20px 0 rgb(126, 126, 250);
+    text-decoration: none;
+}
+.post-dropdown, .collapse {
+    width: 100%;
+    text-decoration: none;
+}
+.comment{
+    height: 50px;
+}
+.info{
+    text-align: center;
+    align-items: center;
+}
+/*footer*/
+#bottom-footer {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 50px;
+    width: 100%;
+    text-align: center;
 }

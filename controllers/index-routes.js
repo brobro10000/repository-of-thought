@@ -1,6 +1,7 @@
 const router = require('express').Router();
 
 router.get('/index', (req, res) => {
+    console.log(req.session)
     if(req.session.user_id == 1){
         var loggedIn = false
     }

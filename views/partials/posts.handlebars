@@ -1,0 +1,30 @@
+<section class='container'>
+    <p class='post-container'>
+        <button class="btn post-dropdown" type="button" data-bs-toggle="collapse" data-bs-target=".multi-collapse"
+            aria-expanded="false" aria-controls="multiCollapseExample1 multiCollapseExample2">Toggle all
+            elements</button>
+    </p>
+    <div class="row post-container">
+        <div class="col">
+            <a class="btn post-dropdown" data-bs-toggle="collapse" href="#multiCollapseExample1" role="button"
+                aria-expanded="false" aria-controls="multiCollapseExample1">
+                Post Information, Date Created
+            </a>
+            <div class="btn collapse multi-collapse" id="multiCollapseExample1" data-bs-toggle="collapse"
+                href="#nestedCollapse1" aria-expanded="false" area-controls="nestedCollapse1">
+                <div class="card card-body">
+                    Some placeholder content for the first collapse component of this multi-collapse example. This panel
+                    is
+                    hidden by default but revealed when the user activates the relevant trigger.
+                </div>
+            </div>
+            <div id='nestedCollapse1' class='row justify-content-between info collapse post-dropdown multi-collapse'>
+                <a class="col-4">
+                    username date created
+                </a>
+                <img id='comment-btn' class='col-1 comment'
+                    type='button' src='./images/chat.svg'>
+            </div>
+        </div>
+    </div>
+</section>
