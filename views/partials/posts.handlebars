@@ -1,30 +1,29 @@
 <section class='container'>
     <p class='post-container'>
-        <button class="btn post-dropdown" type="button" data-bs-toggle="collapse" data-bs-target=".multi-collapse"
-            aria-expanded="false" aria-controls="multiCollapseExample1 multiCollapseExample2">Toggle all
+        <button class="btn post-dropdown" type="button" data-bs-toggle="collapse"  data-bs-target=".multi-collapse"
+            aria-expanded="true">Toggle all
             elements</button>
     </p>
-    <div class="row post-container">
+{{#each post}}
+    <div class="row post-container" data-bs-parent='collapse'>
         <div class="col">
-            <a class="btn post-dropdown" data-bs-toggle="collapse" href="#multiCollapseExample1" role="button"
-                aria-expanded="false" aria-controls="multiCollapseExample1">
-                Post Information, Date Created
+            <a class="btn post-dropdown" data-bs-toggle="collapse" href="#multiCollapseExample{{count}}" role="button"
+                aria-expanded="true" aria-controls="multiCollapseExample{{count}}">
+                {{title}}
             </a>
-            <div class="btn collapse multi-collapse" id="multiCollapseExample1" data-bs-toggle="collapse"
-                href="#nestedCollapse1" aria-expanded="false" area-controls="nestedCollapse1">
+            <div class="collapse multi-collapse" id="multiCollapseExample{{count}}" >
                 <div class="card card-body">
-                    Some placeholder content for the first collapse component of this multi-collapse example. This panel
-                    is
-                    hidden by default but revealed when the user activates the relevant trigger.
+                    {{post}}
                 </div>
             </div>
-            <div id='nestedCollapse1' class='row justify-content-between info collapse post-dropdown multi-collapse'>
-                <a class="col-4">
-                    username date created
+            <div id='{{!-multiCollapseExample{{count}}test' class='row justify-content-between info post-dropdown {{!-collapse multi-collapse}}'>
+                <a class="col-8" style='text-decoration:none'>
+                    Posted by {{username}} on, {{date}}
                 </a>
                 <img id='comment-btn' class='col-1 comment'
                     type='button' src='./images/chat.svg'>
             </div>
         </div>
     </div>
+{{/each}}
 </section>
