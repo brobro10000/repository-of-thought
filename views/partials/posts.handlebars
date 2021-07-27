@@ -16,7 +16,7 @@
                 </div>
                 {{#if delete}}
                 <div class='col-1 offset-3' style='padding:0px'>
-                    <img id='delete-btn' class='comment' type='button' src='./images/cancel.svg'>
+                    <img id='delete-btn{{id}}' onclick='getId(this)' class='comment delete' type='button' src='./images/cancel.svg'>
                 </div>
                 {{/if}}
             </div>

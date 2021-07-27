@@ -3,7 +3,7 @@ const { Post, User } = require('../models');
 const router = require('express').Router();
 
 router.get('/index', async(req, res) => {
-    if(req.session.user_id == 1){
+    if(req.session.user_id){
         var loggedIn = false
     }
     else{

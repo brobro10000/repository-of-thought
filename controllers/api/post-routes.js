@@ -26,4 +26,22 @@ router.post('/create_post', withAuth, async (req,res) => {
     res.json(createPost)
 })
 
+router.delete('/:id', withAuth, async (req,res) => {
+    const deletePost = await Post.destroy({
+        where: {
+            id: req.params.id
+        }
+    }).then(dbPostData => {
+        if (!dbPostData) {
+          res.status(404).json({ message: 'No post found with this id' });
+          return;
+        }
+        res.render('dashboard')
+      })
+      .catch(err => {
+        console.log(err);
+        res.status(500).json(err);
+      });
+    
+})
 module.exports = router

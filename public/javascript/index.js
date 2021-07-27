@@ -36,7 +36,7 @@ async function renderLogin() {
         }
     })
     if (render.ok) {
-        return console.log("true");
+        return 
     } else {
         alert(render.statusText)
     }
