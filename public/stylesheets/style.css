@@ -45,11 +45,11 @@ body {
     margin: 2vw 30%;
     text-align: center;
 }
-/* signup */
+/* signup/createPost */
 .signUp{
     margin: 2vw 40%;
 }
-.signUp-Partial{
+.signUp-Partial, .createPost-Partial{
     background: #e7ecf0;
     border: 5px;
     border-style: inset;
@@ -57,9 +57,22 @@ body {
     box-shadow: 0 4px 8px 0 rgb(54, 148, 192), 0 6px 20px 0 rgb(126, 126, 250);
     border-color: rgb(93, 194, 241);
 }
+.createPost-Partial {
+    padding: .5vw;
+}
 .signUp-Partial h2,.btn{
     text-decoration: underline;
     color:rgb(17, 144, 203);
+}
+.createPost-Partial h2, .btn{
+    text-decoration: underline;
+    color:rgb(17, 144, 203);
+}
+.createPost-Partial h2 {
+    font-size: 1vw;
+}
+#form-comment {
+    height:100px;
 }
 /*posts*/
 .post-container {
@@ -72,16 +85,23 @@ body {
     box-shadow: 0 4px 8px 0 rgb(54, 148, 192), 0 6px 20px 0 rgb(126, 126, 250);
     text-decoration: none;
 }
+.dashboard .post-container {
+    margin: 1vw 10%
+}
 .post-dropdown, .collapse {
     width: 100%;
     text-decoration: none;
+    
 }
 .comment{
-    height: 50px;
+    height: 2vw;
+    width: auto;
+    padding: 6px;
 }
 .info{
     text-align: center;
     align-items: center;
+    margin: 0px;
 }
 /*footer*/
 #bottom-footer {

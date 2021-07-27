@@ -1,29 +1,40 @@
 <section class='container'>
     <p class='post-container'>
-        <button class="btn post-dropdown" type="button" data-bs-toggle="collapse"  data-bs-target=".multi-collapse"
+        <button class="btn post-dropdown" type="button" data-bs-toggle="collapse" data-bs-target=".multi-collapse"
             aria-expanded="true">Toggle all
             elements</button>
     </p>
-{{#each post}}
+    {{#each post}}
     <div class="row post-container" data-bs-parent='collapse'>
-        <div class="col">
-            <a class="btn post-dropdown" data-bs-toggle="collapse" href="#multiCollapseExample{{count}}" role="button"
-                aria-expanded="true" aria-controls="multiCollapseExample{{count}}">
-                {{title}}
-            </a>
-            <div class="collapse multi-collapse" id="multiCollapseExample{{count}}" >
+        <div>
+            <div class="row align-items-center">
+                <div class='col-4 offset-4' style='padding:0px'>
+                    <a class="btn post-dropdown " data-bs-toggle="collapse" href="#multiCollapseExample{{id}}"
+                        role="button" aria-expanded="true" aria-controls="multiCollapseExample{{id}}">
+                        {{title}}
+                    </a>
+                </div>
+                {{#if delete}}
+                <div class='col-1 offset-3' style='padding:0px'>
+                    <img id='delete-btn' class='comment' type='button' src='./images/cancel.svg'>
+                </div>
+                {{/if}}
+            </div>
+            <div class="collapse multi-collapse" id="multiCollapseExample{{id}}">
                 <div class="card card-body">
                     {{post}}
                 </div>
             </div>
-            <div id='{{!-multiCollapseExample{{count}}test' class='row justify-content-between info post-dropdown {{!-collapse multi-collapse}}'>
+            <div id='{{!-multiCollapseExample{{count}}test'
+                class='row justify-content-between info post-dropdown {{!-collapse multi-collapse}}'>
                 <a class="col-8" style='text-decoration:none'>
                     Posted by {{username}} on, {{date}}
                 </a>
-                <img id='comment-btn' class='col-1 comment'
-                    type='button' src='./images/chat.svg'>
+                <div class='col-1'>
+                    <img id='comment-btn' class='comment' type='button' src='./images/chat.svg'>
+                </div>
             </div>
         </div>
     </div>
-{{/each}}
+    {{/each}}
 </section>

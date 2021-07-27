@@ -33,15 +33,13 @@ router.get('/', withAuth, async (req,res)=> {
         // date = date.toLocaleDateString() + ", at " + date.toLocaleTimeString()
         // console.group(date)
         // console.log(data[0].user.username)
-        // console.log(data[0].post)
+        console.log(data[0])
         // console.log(data[0].title)
         var post = []
-        var count = 1
         data.forEach(element => {
             var date = new Date(element.createdAt)
             date = date.toLocaleDateString() + ", at " + date.toLocaleTimeString()
-            post.push({count:count,username:element.user.username,title:element.title,post:element.post, date:date})
-            count++
+            post.push({id:element.id,username:element.user.username,title:element.title,post:element.post, date:date,delete:true})
         })
         console.log(post)
         return post
@@ -52,8 +50,6 @@ router.get('/', withAuth, async (req,res)=> {
             count++
     var post = allPostById[allPostById.length-1]
     console.log(post)
-
-
 
     return res.render('dashboard', {loggedIn: loggedIn, signUp:true, post: allPostById} )
 })

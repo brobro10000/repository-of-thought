@@ -27,12 +27,10 @@ router.get('/index', async(req, res) => {
         // console.log(data[0].post)
         // console.log(data[0].title)
         var post = []
-        var count = 1
         data.forEach(element => {
             var date = new Date(element.createdAt)
             date = date.toLocaleDateString() + ", at " + date.toLocaleTimeString()
-            post.push({count:count,username:element.user.username,title:element.title,post:element.post, date:date})
-            count++
+            post.push({id:element.id,username:element.user.username,title:element.title,post:element.post, date:date})
         })
         console.log(post)
         return post

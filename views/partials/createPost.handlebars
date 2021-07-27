@@ -1,0 +1,24 @@
+<section class="createPost-Partial">
+  {{!-- Container{{Signup{username and box, password and box}}} --}}
+  <h2 class="btn post-dropdown" style='text-decoration:none' data-bs-toggle="collapse" href="#createPost" role="button"
+                aria-expanded="true" aria-controls="createPost">
+              Create Post
+            </h2>
+  <form id="createPost" class='collapse'>
+    <div class="mb-3">
+      <label for="post-title" class="form-label">Title</label>
+      <input type="post-title" class="form-control" id="form-title">
+    </div>
+    <div class="mb-3">
+      <label for="post-comment" class="form-label">Comment</label>
+      <textarea type="post-comment" class="form-control" id="form-comment"></textarea>
+    </div>
+    <div class="row">
+          {{!-- <a class="col" style='text-decoration:none'>
+                   {{username}} on, {{date}}
+                </a> --}}
+        <button type="submit" class="btn col" id='submit-btn'>Create</button>
+    </div>
+  </form>
+</section>
+          <script src="/javascript/dashboard.js"></script>
