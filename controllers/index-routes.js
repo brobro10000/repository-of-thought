@@ -1,4 +1,4 @@
-const { Post, User } = require('../models');
+const { Post, User, Comment } = require('../models');
 
 const router = require('express').Router();
 
@@ -14,6 +14,10 @@ router.get('/index', async (req, res) => {
             {
                 model: User,
                 attributes: ['username']
+            },
+            {
+                model: Comment,
+                attributes:['comment_text', 'user_id', 'post_id', 'createdAt'],
             }
         ]
     }).then(data => {
@@ -21,12 +25,43 @@ router.get('/index', async (req, res) => {
         data.forEach(element => {
             var date = new Date(element.createdAt)
             date = date.toLocaleDateString() + ", at " + date.toLocaleTimeString()
-            post.push({ id: element.id, username: element.user.username, title: element.title, post: element.post, date: date })
+            post.push({ id: element.id, username: element.user.username, title: element.title, post: element.post, date: date})
         })
         return post
     })
-
-    res.render('index', { loggedIn: loggedIn, signUp: true, post: allPost })
+    const allComments = await Comment.findAll({
+        include:[
+            {
+                model: User
+            },
+            {
+                model: Post
+            }
+        ]
+    }).then(data=> {
+        var comments = []
+        data.forEach(element => {
+            var date = new Date(element.createdAt)
+            date = date.toLocaleDateString() + ", at " + date.toLocaleTimeString()
+            comments.push({comment_date: date, comment: element.comment_text, comment_username: element.user.username, post_id: element.post_id})
+        })
+        return comments
+    })
+    // console.log(allComments, allPost)
+    finalArr = allPost
+    var i = -1;
+    allPost.forEach(postElement => {
+        i++
+        allComments.forEach(commentElement => {
+            if(postElement.id == commentElement.post_id){
+                if(finalArr[i].comment)
+                finalArr[i].comment.push(commentElement)
+                else
+                finalArr[i].comment = [commentElement]
+            }
+        })
+    })
+    res.render('index', { loggedIn: loggedIn, signUp: true, post: allPost, comment: finalArr[i].comment})
 });
 
 

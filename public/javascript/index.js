@@ -28,6 +28,31 @@ async function dashboardPage() {
         alert(redirect.statusText)
     }
 }
+async function getIdComment(btn) {
+    event.preventDefault()
+    const id = btn.id.split('btn')[1]
+    return addComment(id)
+}
+async function addComment(id){
+    console.log(id)
+    const comment = document.getElementById(`userComment${id}`).value
+    console.log(comment)
+    const response = await fetch(`api/comment/create_comment/${id}`, {
+        method: 'POST',
+        body: JSON.stringify({
+            comment
+        }),
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    });
+        if (response.ok) {
+            document.location.replace('/index')
+        } else {
+            console.log('fail')
+        }
+
+}
 async function renderLogin() {
     const render = await fetch('/index', {
         method: 'GET',
@@ -44,4 +69,5 @@ async function renderLogin() {
 if (document.getElementById('loginBtn'))
     document.getElementById('loginBtn').addEventListener('click', loginPage)
 document.getElementById('dashboardBtn').addEventListener('click', dashboardPage)
+
 renderLogin()

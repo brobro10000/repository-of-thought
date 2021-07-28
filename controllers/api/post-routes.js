@@ -48,7 +48,8 @@ router.put('/edit/:id', withAuth, async (req, res) => {
         {
             title: req.body.title,
             post: req.body.post,
-            user_id: req.session.user_id
+            user_id: req.session.user_id,
+            createdAt: Date.now()
         },
         {
             where: {

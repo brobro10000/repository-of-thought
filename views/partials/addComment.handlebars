@@ -1,0 +1,12 @@
+   <section style='margin:10px 10%'>
+  {{!-- Container{{Signup{username and box, password and box}}} --}}
+  <form id="multiCollapseAddComment{{id}}" class='collapse'>
+    <div class="mb-3">
+      <label for="userComment" class="form-label">Add Comment</label>
+      <textarea type="userComment" class="form-control" id="userComment{{id}}" style='height: 100px; opacity:.5'></textarea>
+    </div>
+    <div class="row">
+        <button class="col btn" id='addComment-btn{{id}}' onclick='getIdComment(this)'>Post</button>
+    </div>
+  </form>
+</section>

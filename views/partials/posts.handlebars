@@ -15,7 +15,7 @@
                         aria-controls="updatePost{{id}}">
                 </div>
                 {{/if}}
-                <div class='col-4 offset-3' style='padding:0px'>
+                <div class='col-4 {{#unless delete}}offset-4{{/unless}}{{#if delete}}offset-3{{/if}}' style='padding:0px'>
                     <a class="btn post-dropdown " data-bs-toggle="collapse" href="#multiCollapseExample{{id}}"
                         role="button" aria-expanded="true" aria-controls="multiCollapseExample{{id}}">
                         {{title}}
@@ -35,9 +35,9 @@
             </div>
             <div id='{{!-multiCollapseExample{{count}}test'
                 class='row justify-content-between info post-dropdown {{!-collapse multi-collapse}}'>
-                <a class="col-8" style='text-decoration:none'>
+                <h6 class="col-8 userInfo" style='text-decoration:none'>
                     Posted by {{username}} on, {{date}}
-                </a>
+                </h6>
                 <div class='col-1'>
                     <img id='comment-btn' class='comment post-dropdown' type='button' src='./images/chat.svg'
                         data-bs-toggle="collapse" href="#multiCollapseComment{{id}}" role="button" aria-expanded="true"

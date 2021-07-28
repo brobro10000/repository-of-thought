@@ -1,8 +1,20 @@
-<section id ='comment' >
-    <div id='multiCollapseComment{{id}}' style='padding:0px'>
-        <h2 style='text-align:center'>Comments</h2>
-        <div  id='comment{{id}}' class='createPost-Partial'>
-            {{title}}
+<section id='multiCollapseComment{{id}}' class='collapse'>
+    <div id='comment' style='padding:0px'>
+        <div class='row'>
+            <h5 class='commentHead col-4 offset-4' style='text-align:center'>comments </h5>
+            {{#unless delete}}<img src='./images/add.svg'  class='comment post-dropdown col-1 offset-3'  type='button' data-bs-toggle="collapse" href="#multiCollapseAddComment{{id}}" role="button" aria-expanded="true"
+                        aria-controls="multiCollapseAddComment{{id}}">{{/unless}}
         </div>
+        {{> addComment}}
+        {{#each comment}}
+        <div id='comment{{id}}' class='post-container' style='margin:5px'>
+            <h5 style='text-align:center;margin: 2%;'>
+                {{comment}}
+            </h5>
+            <img class='line' src='./images/line.svg'>
+            <h6 class='commentHead' style='text-align:center'>Posted by {{comment_username}} on {{comment_date}} </h6>
+        </div>
+        {{/each}}
+
     </div>
 </section>
