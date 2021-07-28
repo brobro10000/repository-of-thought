@@ -25,7 +25,6 @@ router.get('/', withAuth, async (req,res)=> {
             }
         ]
     }).then(data => {
-        console.log(req.session.user_id)
         var post = []
         data.forEach(element => {
             var date = new Date(element.createdAt)

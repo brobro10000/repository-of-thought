@@ -94,7 +94,8 @@ body {
     
 }
 .comment{
-    height: 2vw;
+    height: 2.5rem;
+    /* height: 2vw; */
     width: auto;
     padding: 6px;
 }
@@ -102,6 +103,11 @@ body {
     text-align: center;
     align-items: center;
     margin: 0px;
+}
+/*comment*/
+#comment .createPost-Partial{
+    border: 2px;
+    margin: 10px 10%
 }
 /*footer*/
 #bottom-footer {

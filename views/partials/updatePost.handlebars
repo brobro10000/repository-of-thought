@@ -1,0 +1,19 @@
+   <section style='margin:10px 10%'>
+  {{!-- Container{{Signup{username and box, password and box}}} --}}
+  <form id="updatePost{{id}}" class='collapse'>
+    <div class="mb-3">
+      <label for="title-Update{{id}}" class="form-label">Title</label>
+      <input type="title-Update{{id}}" class="form-control" id="title-Update{{id}}" value='{{title}}' style="opacity:.5">
+    </div>
+    <div class="mb-3">
+      <label for="post-Update{{id}}" class="form-label">Comment</label>
+      <textarea type="post-Update{{id}}" class="form-control" id="post-Update{{id}}" style='height: 100px; opacity:.5'>{{post}}</textarea>
+    </div>
+    <div class="row">
+          {{!-- <a class="col" style='text-decoration:none'>
+                   {{username}} on, {{date}}
+                </a> --}}
+        <button class="col btn" id='update-Post-btn{{id}}' onclick='getIdEdit(this)'>Update</button>
+    </div>
+  </form>
+</section>

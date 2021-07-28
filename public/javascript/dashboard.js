@@ -23,13 +23,20 @@ async function newPost(event) {
     }
 }
 
-async function getId(btn) {
+async function getIdDelete(btn) {
+    event.preventDefault()
     const id = btn.id.split('btn')[1]
     return deletePost(id);
 }
 
+async function getIdEdit(btn) {
+    event.preventDefault()
+    const id = btn.id.split('btn')[1]
+    return editPost(id)
+}
+
 async function deletePost(id) {
-    const response = await fetch(`api/post/${id}`, {
+    const response = await fetch(`api/post/delete/${id}`, {
         method: 'DELETE'
     });
     if (response.ok) {
@@ -38,4 +45,25 @@ async function deletePost(id) {
         alert(response.statusText);
     }
 }
+
+async function editPost(id) {
+    var title = document.getElementById(`title-Update${id}`).value
+    var post = document.getElementById(`post-Update${id}`).value
+    const response = await fetch(`api/post/edit/${id}`,{
+        method: 'PUT',
+        body: JSON.stringify({
+            title,
+            post
+        }),
+        headers: {
+            'Content-Type': 'application/json'
+          }
+    });
+    if (response.ok) {
+        document.location.replace('/dashboard')
+    } else {
+        alert(response.statusText);
+    }
+}
+
 document.getElementById('submit-btn').addEventListener('click', newPost)
