@@ -39,6 +39,7 @@ router.get('/index', async (req, res) => {
             }
         ]
     }).then(data=> {
+        if(data){
         var comments = []
         data.forEach(element => {
             var date = new Date(element.createdAt)
@@ -46,10 +47,11 @@ router.get('/index', async (req, res) => {
             comments.push({comment_date: date, comment: element.comment_text, comment_username: element.user.username, post_id: element.post_id})
         })
         return comments
+    }
     })
-    // console.log(allComments, allPost)
     finalArr = allPost
     var i = -1;
+    if(allPost.length>0){
     allPost.forEach(postElement => {
         i++
         allComments.forEach(commentElement => {
@@ -62,6 +64,10 @@ router.get('/index', async (req, res) => {
         })
     })
     res.render('index', { loggedIn: loggedIn, signUp: true, post: allPost, comment: finalArr[i].comment})
+}
+    else{
+        res.render('index', { loggedIn: loggedIn, signUp: true, post: allPost, comment: false})
+    }
 });
 
 

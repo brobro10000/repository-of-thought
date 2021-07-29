@@ -36,20 +36,25 @@ async function getIdEdit(btn) {
 }
 
 async function deletePost(id) {
-    const response = await fetch(`api/post/delete/${id}`, {
+    const response1 = await fetch(`api/comment/delete/${id}`,{
         method: 'DELETE'
-    });
-    if (response.ok) {
-        document.location.replace('/dashboard')
-    } else {
-        alert(response.statusText);
+    })
+    if (response1.ok) {
+        const response2 = await fetch(`api/post/delete/${id}`, {
+            method: 'DELETE'
+        });
+        if (response2.ok) {
+            document.location.replace('/dashboard')
+        } else {
+            alert(response.statusText);
+        }
     }
 }
 
 async function editPost(id) {
     var title = document.getElementById(`title-Update${id}`).value
     var post = document.getElementById(`post-Update${id}`).value
-    const response = await fetch(`api/post/edit/${id}`,{
+    const response = await fetch(`api/post/edit/${id}`, {
         method: 'PUT',
         body: JSON.stringify({
             title,
@@ -57,7 +62,7 @@ async function editPost(id) {
         }),
         headers: {
             'Content-Type': 'application/json'
-          }
+        }
     });
     if (response.ok) {
         document.location.replace('/dashboard')

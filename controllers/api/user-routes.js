@@ -35,14 +35,17 @@ router.post('/create_user', async (req, res) => {
       username: data.username,
       password: data.password
     }).then(data => {
-      req.session.user_id = data.id;
-      req.session.username = data.username;
-      req.session.expiration = Date.now() + (1000*60*60)
-      req.session.loggedIn = true;
-    }).catch(err => {
+      req.session.save(() => {
+        req.session.user_id = data.id;
+        req.session.username = data.username;
+        req.session.expiration = Date.now() + (1000*60*60)
+        req.session.loggedIn = true;
+      })
+      }).catch(err => {
       console.log(err);
       res.status(500).json(err);
     });
+    res.redirect('/index')
   }
   const checkUser = await User.findOne({
     where: {
@@ -50,7 +53,7 @@ router.post('/create_user', async (req, res) => {
     }
   }).then(data => {
     if (data == null) {
-      res.json(addUser(req.body))
+      return res.json(addUser(req.body))
     } else {
       res.status(418).json()
     }

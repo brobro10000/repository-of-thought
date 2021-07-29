@@ -1,9 +1,9 @@
 async function signUp(event) {
-    event.preventDefault();
     const username = document.getElementById('username').value.trim();
     const password = document.getElementById('password').value.trim();
 
     if (username && password.length >= 8) {
+        event.preventDefault()
         const response = await fetch('/api/user/create_user', {
             method: 'POST',
             body: JSON.stringify({
@@ -15,7 +15,7 @@ async function signUp(event) {
             },
         });
         if (response.ok) {
-            document.location.replace('/dashboard')
+            alert('Account creation Success! Hit submit to log in.')
         } else {
             if (response.status == 418) {
                 alert("Pick a unique username")
@@ -52,4 +52,4 @@ async function logIn(event) {
 };
 
 document.getElementById('submit-btn').addEventListener('click', logIn)
-document.getElementById('signup-btn').addEventListener('click', signUp);
+document.getElementById('signup-btn').addEventListener('click', signUp)

@@ -22,6 +22,20 @@ router.post('/create_comment/:id', withAuth, async (req,res)=> {
     })
     res.json(createComment)
 });
-
+router.delete('/delete/:id',withAuth, async (req,res)=> {
+    if (req.session.user_id) {
+        if (req.session.expiration <= Date.now()) {
+            req.session.destroy(() => {
+                return res.render('login', { signUp: false })
+            })
+        }
+    }
+    const deleteComments = await Comment.destroy({
+        where:{
+            post_id: req.params.id
+        }
+    })
+    res.json(deleteComments)
+})
 
 module.exports = router

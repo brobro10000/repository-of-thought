@@ -34,7 +34,6 @@ async function getIdComment(btn) {
     return addComment(id)
 }
 async function addComment(id){
-    console.log(id)
     const comment = document.getElementById(`userComment${id}`).value
     console.log(comment)
     const response = await fetch(`api/comment/create_comment/${id}`, {
