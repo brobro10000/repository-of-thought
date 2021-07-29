@@ -15,7 +15,7 @@ async function signUp(event) {
             },
         });
         if (response.ok) {
-            alert('Account creation Success! Hit submit to log in.')
+            document.location.replace('/dashboard')
         } else {
             if (response.status == 418) {
                 alert("Pick a unique username")
