@@ -1,5 +1,5 @@
 const { Post, User, Comment } = require('../models');
-
+const withAuth = require('../utils/auth')
 const router = require('express').Router();
 
 router.get('/index', async (req, res) => {
@@ -8,6 +8,7 @@ router.get('/index', async (req, res) => {
     }
     else {
         var loggedIn = true
+        // return res.redirect('/login')
     }
     const allPost = await Post.findAll({
         include: [

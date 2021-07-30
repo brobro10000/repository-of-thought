@@ -29,7 +29,7 @@ router.get('/', withAuth, async (req,res)=> {
         data.forEach(element => {
             var date = new Date(element.createdAt)
             date = date.toLocaleDateString() + ", at " + date.toLocaleTimeString()
-            post.push({id:element.id,username:element.user.username,title:element.title,post:element.post, date:date,delete:true})
+            post.push({id:element.id,username:element.user.username,title:element.title,post:element.post, date:date, delete:true})
         })
 
         return post

@@ -11,7 +11,7 @@ router.post('/create_comment/:id', withAuth, async (req,res)=> {
     if (req.session.user_id) {
         if (req.session.expiration <= Date.now()) {
             req.session.destroy(() => {
-                return res.render('login', { signUp: false })
+                return res.render('login', { signUp: false})
             })
         }
     }

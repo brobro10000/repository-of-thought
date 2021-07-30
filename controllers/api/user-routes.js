@@ -2,6 +2,33 @@ const router = require('express').Router();
 const { User } = require('../../models/');
 const withAuth = require('../../utils/auth');
 
+router.post('/create_user', (req, res) => {
+  return User.findOne({
+    where: {
+      username: req.body.username
+    }
+  }).then(data => {
+    console.log(data)
+    if (data == null) {
+      return User.create({
+        username: req.body.username,
+        password: req.body.password
+      })
+    } 
+    return res.status(418).json()
+    
+  }).then(data => {
+      req.session.user_id = data.id;
+      req.session.username = data.username;
+      req.session.expiration = Date.now() + (1000*60*60)
+      req.session.loggedIn = true;
+      return res.status(200).json()
+
+    }).catch(err => {
+    console.log(err);
+    res.status(500).json(err);
+  });
+})
 router.post('/login', (req, res) => {
   User.findOne({
     where: {
@@ -28,65 +55,6 @@ router.post('/login', (req, res) => {
       res.redirect('/dashboard')
     });
   });
-})
-router.post('/create_user', async (req, res) => {
-  return User.findOne({
-    where: {
-      username: req.body.username
-    }
-  }).then(data => {
-    console.log(data)
-    if (data == null) {
-      return User.create({
-        username: req.body.username,
-        password: req.body.password
-      })
-      // return res.json(addUser(req.body))
-    } 
-    return res.status(418).json()
-    
-  }).then(data => {
-      req.session.user_id = data.id;
-      req.session.username = data.username;
-      req.session.expiration = Date.now() + (1000*60*60)
-      req.session.loggedIn = true;
-      return res.status(200)
-
-    }).catch(err => {
-    console.log(err);
-    res.status(500).json(err);
-  });
-  // function addUser(data) {
-  //   User.create({
-  //     username: data.username,
-  //     password: data.password
-  //   }).then(data => {
-  //     req.session.save(() => {
-  //       req.session.user_id = data.id;
-  //       req.session.username = data.username;
-  //       req.session.expiration = Date.now() + (1000*60*60)
-  //       req.session.loggedIn = true;
-  //       res.redirect('/dashboard')
-  //     })
-  //     }).catch(err => {
-  //     console.log(err);
-  //     res.status(500).json(err);
-  //   });
-  //   res.redirect('/index')
-  // }
-  // const checkUser = await User.findOne({
-  //   where: {
-  //     username: req.body.username
-  //   }
-  // }).then(data => {
-  //   if (data == null) {
-  //     return res.json(addUser(req.body))
-  //   } else {
-  //     res.status(418).json()
-  //   }
-  // })
-  
-  // return checkUser
 })
 router.get('/', async (req, res) => {
   const allUsers = await User.findAll()

@@ -2,7 +2,7 @@
     <div id='comment' style='padding:0px'>
         <div class='row'>
             <h5 class='commentHead col-4 offset-4' style='text-align:center'>comments </h5>
-            {{#unless delete}}<img src='./images/add.svg'  class='comment post-dropdown col-1 offset-3'  type='button' data-bs-toggle="collapse" href="#multiCollapseAddComment{{id}}" role="button" aria-expanded="true"
+ {{#unless delete}}<img src='./images/add.svg'  class='comment post-dropdown col-1 offset-3'  type='button'  data-bs-toggle="collapse" href="#multiCollapseAddComment{{id}}" role="button" aria-expanded="true"
                         aria-controls="multiCollapseAddComment{{id}}">{{/unless}}
         </div>
         {{> addComment}}
