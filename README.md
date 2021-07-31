@@ -4,7 +4,7 @@
 "Technology Blog Homepage")
 ]()
 
-## **ROT**
+## **ROT Here**
 Repository of Thought is a technology blog allowing you to leave your comments and letting them ROT there! 
 
 
